@@ -1,0 +1,3 @@
+name: blast-webservice
+script: /blast-webservice-source/src/server.js
+args: ["--port", 8181]
