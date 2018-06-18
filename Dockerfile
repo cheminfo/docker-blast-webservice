@@ -1,4 +1,4 @@
-FROM node:10.4.1-alpine
+FROM node:10.4.1-jessie
 
 RUN mkdir /blast
 
@@ -9,7 +9,6 @@ RUN wget -qO- "ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/${BLAST_VERSI
 ENV VERSION 6350c66d7a353e0b67d0fc0dbf66a04305e9caab
 
 RUN vVERSION=$(echo $VERSION | sed -E s/^[0-9]\\.+\[0-9]+\\.[0-9]+/v\\0/g) && \
-    apk add --no-cache curl && \
     echo https://github.com/cheminfo/blast-webservice/archive/$vVERSION.tar.gz && \
     curl -fSL https://github.com/cheminfo/blast-webservice/archive/$vVERSION.tar.gz -o $VERSION.tar.gz && \
     tar -xzf $VERSION.tar.gz && \
